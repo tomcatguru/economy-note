@@ -17,8 +17,8 @@ const koreanQuestions=[
 ];
 
 const LANGUAGE_KEY = 'jiho-economy-language';
-let language = 'ko';
-try { if (localStorage.getItem(LANGUAGE_KEY) === 'en') language = 'en'; } catch { /* Storage may be unavailable in private or file browsing. */ }
+let language = 'en';
+try { if (localStorage.getItem(LANGUAGE_KEY) === 'ko') language = 'ko'; } catch { /* Storage may be unavailable in private or file browsing. */ }
 const t = (ko, en) => language === 'en' ? en : ko;
 const locale = () => language === 'en' ? 'en-US' : 'ko-KR';
 const won = value => Math.round(value).toLocaleString(locale());
