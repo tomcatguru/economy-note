@@ -63,11 +63,11 @@ let animationPlaying = !reducedMotion.matches;
 
 function updateAnimation() {
   const base = `./assets/inflation-${language}`;
-  const source = base + (animationPlaying ? '.gif' : '-still.png');
+  const source = base + (animationPlaying ? '.gif?v=readable-2' : '-still.png?v=readable-2');
   if (animationImage.getAttribute('src') !== source) animationImage.setAttribute('src', source);
-  document.querySelector('#download-animation').href = base + '.gif';
+  document.querySelector('#download-animation').href = base + '.gif?v=readable-2';
   animationToggle.textContent = animationPlaying ? t('정지하고 요약 보기', 'Stop and show summary') : t('GIF 재생', 'Play GIF');
-  document.querySelector('#animation-status').textContent = animationPlaying ? t('약 18초 · 반복 재생 · 소리 없음', '18-second loop · No audio') : t('정지된 요약 이미지', 'Still summary');
+  document.querySelector('#animation-status').textContent = animationPlaying ? t('장면당 12초 · 총 36초 · 소리 없음', '12 seconds per scene · 36-second loop · No audio') : t('정지된 요약 이미지', 'Still summary');
 }
 animationToggle.addEventListener('click', () => { animationPlaying = !animationPlaying; updateAnimation(); });
 reducedMotion.addEventListener('change', event => { animationPlaying = !event.matches; updateAnimation(); });

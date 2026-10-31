@@ -36,7 +36,7 @@ def base(lang, step, title):
     d = ImageDraw.Draw(im)
     text(d,(36,25),'ECONOMY IN MOTION', 'en',18,BLUE)
     text(d,(764,25),f'{step:02d} / 03','en',18,MUTED,'ra')
-    text(d,(36,76),title,lang,36)
+    text(d,(36,76),title,lang,38)
     for i in range(3):
         x = 36+i*247
         d.rounded_rectangle((x,132,x+232,137), radius=2,fill=BLUE if i==step-1 else LINE)
@@ -58,7 +58,7 @@ def frame(lang,scene,p):
     im,d = base(lang,scene+1,c[0])
     if scene<2:
         for x in [36,416]: d.rounded_rectangle((x,163,x+348,430),18,fill=PALE if x==416 else '#eef1e9')
-        for cx,label in [(210,c[1]),(590,c[2])]: text(d,(cx,181),label,lang,22,MUTED,'ma')
+        for cx,label in [(210,c[1]),(590,c[2])]: text(d,(cx,181),label,lang,28,MUTED,'ma')
         if scene==0:
             basket(d,210,255); basket(d,590,255)
             text(d,(210,343),'£100',lang,52,INK,'ma')
@@ -73,15 +73,15 @@ def frame(lang,scene,p):
         lines = c[3:5]
     else:
         for i,(cx,val) in enumerate([(156,100),(400,105),(644,105+2.1*p)]):
-            text(d,(cx,174),c[1+i],lang,21,MUTED,'ma')
+            text(d,(cx,174),c[1+i],lang,28,MUTED,'ma')
             height=val*1.8  # A zero baseline keeps the price comparison proportional.
             d.rounded_rectangle((cx-70,414-height,cx+70,414),9,fill=BLUE if i==2 else '#9cadde')
             text(d,(cx,423),f'£{val:g}' if i<2 else f'£{val:.2f}',lang,29,INK,'ma')
         text(d,(280,230),'+5%',lang,27,GREEN,'ma')
         text(d,(521,205),'+2%',lang,27,BLUE,'ma')
         lines=c[4:6]
-    text(d,(400,479),lines[0],lang,26,INK,'ma')
-    text(d,(400,516),lines[1],lang,26,INK,'ma')
+    text(d,(400,479),lines[0],lang,32,INK,'ma')
+    text(d,(400,516),lines[1],lang,32,INK,'ma')
     return im
 
 for lang in COPY:
@@ -89,7 +89,7 @@ for lang in COPY:
     for scene in range(3):
         for j in range(21):
             frames.append(frame(lang,scene,j/20))
-            durations.append(1300 if j==0 else 3200 if j==20 else 80)
+            durations.append(2200 if j==0 else 6950 if j==20 else 150)
     # One shared palette avoids flickering between animation frames.
     samples = Image.new('RGB', (W,H*3))
     for scene in range(3): samples.paste(frame(lang,scene,1),(0,H*scene))
@@ -104,7 +104,7 @@ for lang in COPY:
         y=165+i*121
         d.rounded_rectangle((36,y,764,y+106),12,fill=PALE)
         text(d,(58,y+12),number,lang,34,BLUE)
-        text(d,(58,y+59),label,lang,26)
+        text(d,(58,y+59),label,lang,32)
     im.save(OUT/f'inflation-{lang}-still.png',optimize=True)
     with Image.open(OUT/f'inflation-{lang}.gif') as gif:
         print(lang,gif.size,gif.n_frames,'frames',sum(gif.seek(i) or gif.info['duration'] for i in range(gif.n_frames)),'ms', (OUT/f'inflation-{lang}.gif').stat().st_size,'bytes')

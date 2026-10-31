@@ -8,12 +8,12 @@ const englishUI = [
   ['nav a[href="#lab"]', 'Economy lab'],
   ['nav a[href="#quiz"]', 'Quick quiz'],
   ['.header-link', 'About <span aria-hidden="true">↗</span>'],
-  ['#hero-title', 'See everyday life<br>through an<br><span>economic lens.</span>'],
-  ['.hero-copy > p', 'From a cup of coffee to the interest on your savings.<br>Explore economics in the language of everyday life.'],
+  ['#hero-title', 'See everyday life<br> through an<br> <span>economic lens.</span>'],
+  ['.hero-copy > p', 'From a cup of coffee to the interest on your savings.<br> Explore economics in the language of everyday life.'],
   ['.hero-copy .button', 'Open your first note <span aria-hidden="true">↗</span>'],
   ['.hero-caption', '<span>01 — 06</span> Six concepts to start your economics journey'],
   ['.visual-top span:last-child', 'Everyday economics ↗'],
-  ['.visual-question', 'Same coffee.<br>Why a higher price?'],
+  ['.visual-question', 'Same coffee.<br> Why a higher price?'],
   ['.price-before small', 'Last year'], ['.price-after small', 'This year'],
   ['.price-before strong', '4,000<span>KRW</span>'], ['.price-after strong', '4,200<span>KRW</span>'],
   ['.visual-bottom > span:first-child', 'Discover the economics hidden in a price.'],
@@ -29,12 +29,14 @@ const englishUI = [
   ['.section-note', 'Six easy-to-read notes'],
   ['[data-filter="all"]', 'All notes'], ['[data-filter="daily"]', 'Everyday economics'],
   ['[data-filter="money"]', 'Money in motion'], ['[data-filter="big"]', 'The bigger picture'],
-  ['#animation-title', 'Inflation, in motion.'],
-  ['.animation-intro', 'Connect prices, purchasing power, and inflation in three short scenes.'],
+  ['#animation-title', 'Inflation: why the same money buys less.'],
+  ['.animation-intro', 'Inflation is a sustained rise in the overall price level of goods and services. When prices across groceries, transport, housing, and other spending rise, the same money buys less. This is a loss of purchasing power.'],
+  ['.inflation-definition', 'One more expensive coffee does not tell us how much prices have risen overall. The Consumer Price Index (CPI) tracks a basket of goods and services that households buy. The year-on-year inflation rate measures how much that index has changed compared with a year earlier.'],
+  ['.inflation-causes', 'Why do prices rise? Demand growing faster than the economy can supply goods and services, or higher production costs such as energy and raw materials, can push prices up. Several forces can act together, and individual prices do not all rise at the same rate.'],
   ['.animation-caption', 'An original learning animation informed by the Bank of England’s inflation explainer. Figures are illustrative; no footage or audio from the original video is used.'],
   ['#download-animation', 'Download GIF ↓'],
   ['.animation-transcript summary', 'Read the three key ideas'],
-  ['.animation-transcript ol', '<li>If the same basket rises from £100 to £102, its price has risen by 2%.</li><li>After a 2% price rise, the same £100 buys about 98% of the original basket. (100 ÷ 1.02 ≈ 98.04)</li><li>If the basket costs £100 → £105 → £107.10, inflation falls from 5% to 2%, but prices keep rising.</li>'],
+  ['.animation-transcript ol', '<li><strong>Inflation rate:</strong> If the same basket rises from £100 to £102, its price has risen by 2%. Calculate the change as (102 − 100) ÷ 100 × 100.</li><li><strong>Purchasing power:</strong> After a 2% price rise, the same £100 buys about 98% of the original basket. (100 ÷ 1.02 ≈ 98.04) Maintaining the same standard of living now costs more.</li><li><strong>Prices versus inflation:</strong> If the basket costs £100 → £105 → £107.10, inflation falls from 5% to 2%, but prices keep rising. A sustained fall in the overall price level is called deflation.</li>'],
   ['.animation-source a', 'Concept reference · Bank of England: What is inflation? ↗'],
   ['#video-title', 'See inflation explained.'],
   ['.video-description', 'Explore what rising prices mean with the Bank of England’s “What is inflation?” video.'],
@@ -56,7 +58,7 @@ const englishUI = [
   ['#quiz h2', 'One question to make it stick.'],
   ['#quiz > div:first-child > p', 'A small check can turn an idea into lasting knowledge.'],
   ['#about h2', 'Economics is part of every day.'],
-  ['#about p', 'Jiho’s Economy Note connects everyday questions with economic ideas.<br>Prices and figures here are illustrative examples for learning.'],
+  ['#about p', 'Jiho’s Economy Note connects everyday questions with economic ideas.<br> Prices and figures here are illustrative examples for learning.'],
   ['#about > a', 'Back to the notes ↑'],
   ['footer > span', 'Jiho’s Economy Note <span class="footer-divider">/</span> A demo for learning'],
   ['footer a[target]', 'Further reading · Bank of England on inflation ↗'],
@@ -64,12 +66,12 @@ const englishUI = [
 ];
 
 const englishCards = {
-  inflation: ['Prices and inflation', 'Why the same money buys less<br>as prices rise.', 'Understanding purchasing power'],
-  interest: ['Interest rates', 'What if money has a price?<br>A story of borrowing and saving.', 'How interest works'],
-  exchange: ['Exchange rates', 'Why does a stronger dollar<br>make travel more expensive?', 'Trading one currency for another'],
-  supply: ['Supply and demand', 'People who buy. People who sell.<br>Prices emerge where they meet.', 'How markets find a price'],
-  gdp: ['GDP and economic growth', 'How do we measure<br>the size of an economy?', 'Understanding economic output'],
-  opportunity: ['Opportunity cost', 'Every time we choose,<br>we also give something up.', 'The starting point for better choices']
+  inflation: ['Prices and inflation', 'Why the same money buys less<br> as prices rise.', 'Understanding purchasing power'],
+  interest: ['Interest rates', 'What if money has a price?<br> A story of borrowing and saving.', 'How interest works'],
+  exchange: ['Exchange rates', 'Why does a stronger dollar<br> make travel more expensive?', 'Trading one currency for another'],
+  supply: ['Supply and demand', 'People who buy. People who sell.<br> Prices emerge where they meet.', 'How markets find a price'],
+  gdp: ['GDP and economic growth', 'How do we measure<br> the size of an economy?', 'Understanding economic output'],
+  opportunity: ['Opportunity cost', 'Every time we choose,<br> we also give something up.', 'The starting point for better choices']
 };
 const englishCategories = {daily:'Everyday economics', money:'Money in motion', big:'The bigger picture'};
 
