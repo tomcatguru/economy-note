@@ -6,8 +6,8 @@
 
 - 저장소: https://github.com/tomcatguru/economy-note
 - GitHub Pages 주소: https://tomcatguru.github.io/economy-note/
-- 배포 소스: `main` 브랜치의 `/ (root)`
-- 이후 수정: 이 폴더에서 변경한 파일을 커밋하고 `git push`하면 GitHub Pages가 자동으로 다시 배포합니다. 로컬 파일을 저장하는 것만으로는 업로드되지 않습니다.
+- Pages 설정: 저장소의 `Settings → Pages`에서 `Deploy from a branch`, `main`, `/ (root)`를 선택하고 저장합니다. 최초 활성화가 되어야 위 Pages 주소가 열립니다.
+- 이후 수정: Pages 활성화 후 이 폴더에서 변경한 파일을 커밋하고 `git push`하면 GitHub Pages가 자동으로 다시 배포합니다. 로컬 파일을 저장하는 것만으로는 업로드되지 않습니다.
 
 아래의 신규 저장소 생성 안내는 다른 계정이나 새 프로젝트에 같은 사이트를 만들 때 참고하세요.
 
