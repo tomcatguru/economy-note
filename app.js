@@ -91,6 +91,14 @@ function renderLesson(key) {
   append('h3', t('한 걸음 더', 'One step further'));
   append('p', lesson.detail);
   append('p', lesson.takeaway, 'takeaway');
+  if (key === 'inflation') {
+    const videoLink = document.createElement('a');
+    videoLink.href = '#watch';
+    videoLink.className = 'lesson-video-link';
+    videoLink.textContent = t('관련 영상 · 영란은행의 인플레이션 설명 →', 'Related video · Inflation explained by the Bank of England →');
+    videoLink.addEventListener('click', () => dialog.close());
+    body.append(videoLink);
+  }
   if (lesson.source) {
     const link = document.createElement('a');
     link.href = lesson.source;
