@@ -30,6 +30,11 @@ GitHub Pages는 정적 사이트 호스팅입니다. 설명 글, 이미지, 브�
 - 설명과 점수를 제공하는 3문제 퀴즈
 - 휴대폰 화면 대응, 키보드 조작, 모션 감소 설정 대응
 - 외부 폰트나 JavaScript 라이브러리에 의존하지 않는 구성
+- 상단의 한국어 / English 선택으로 전체 화면, 경제노트, 계산기, 퀴즈 언어 전환
+
+첫 방문은 한국어로 시작하며 선택한 언어는 같은 브라우저에 저장됩니다. 브라우저가 저장 기능을 제한하면 언어 전환은 가능하지만 다음 방문까지 기억하지 못할 수 있습니다. 언어를 바꿔도 현재 계산값, 주제 필터, 퀴즈 진행 상태는 유지됩니다. 영어에서도 통화는 한국 원화(KRW)이며 환전 기능은 아닙니다.
+
+번역 수정: 정적 한국어 문구는 `index.html`, 한국어 노트·퀴즈와 동적 안내는 `app.js`, 영어 정적 문구·노트·퀴즈는 `i18n.js`에서 관리합니다. HTML 구조를 변경할 때는 `i18n.js`의 선택자도 함께 확인하세요. 배포 시 `i18n.js`도 반드시 함께 업로드해야 합니다.
 
 가격과 금리는 학습용 가정입니다. 실제 통계나 전망을 제공하는 사이트가 아닙니다. 퀴즈 결과는 페이지를 새로고침하면 초기화됩니다.
 
@@ -52,6 +57,7 @@ python3 -m http.server 8000 --bind 127.0.0.1
 | `index.html` | 제목, 메뉴, 본문 구조, 카드의 짧은 소개 | 사이트 이름·메인 문구 변경 |
 | `styles.css` | 색, 글자, 배치, 휴대폰 화면 | 디자인 변경 |
 | `app.js` | 노트 상세 내용, 필터, 계산기, 퀴즈 | 학습 내용·퀴즈 변경 |
+| `i18n.js` | 영어 화면 문구, 노트, 퀴즈 | 영어 번역 변경 |
 | `favicon.svg` | 브라우저 탭 아이콘 | 로고 변경 |
 | `.nojekyll` | Jekyll 처리를 생략하도록 표시 | 그대로 유지 |
 | `.gitignore` | 불필요한 로컬 파일을 Git에서 제외 | 그대로 유지 |
@@ -73,7 +79,7 @@ python3 -m http.server 8000 --bind 127.0.0.1
 ### B. 데모 파일 업로드
 
 1. 생성된 저장소의 **Code** 화면에서 **Add file → Upload files**를 선택합니다.
-2. 이 폴더의 `index.html`, `styles.css`, `app.js`, `favicon.svg` 파일을 업로드 영역에 끌어놓습니다.
+2. 이 폴더의 `index.html`, `styles.css`, `app.js`, `i18n.js`, `favicon.svg` 파일을 업로드 영역에 끌어놓습니다.
 3. 폴더 자체 안에 또 폴더가 생기지 않도록, **저장소 최상위에 `index.html`이 보이는 구조**로 올립니다.
 4. **Commit changes** 영역에 `Add economy learning demo`처럼 변경 내용을 적습니다.
 5. `main` 브랜치에 직접 저장하는 옵션을 선택하고 **Commit changes**를 누릅니다.
@@ -87,6 +93,7 @@ economy-note/
 ├── index.html
 ├── styles.css
 ├── app.js
+├── i18n.js
 ├── favicon.svg
 ├── .nojekyll
 └── README.md
@@ -121,7 +128,7 @@ https://YOUR-USERNAME.github.io/economy-note/
 3. 내용을 수정하고 **Commit changes**로 `main`에 저장합니다.
 4. Pages가 변경 내용을 다시 배포합니다. Actions의 성공 상태를 확인한 후 새로고침합니다.
 
-예를 들어 첫 화면의 문구는 `index.html`의 `<h1>`에서, 경제노트 상세 내용은 `app.js`의 `lessons`에서, 퀴즈는 `questions`에서 바꿀 수 있습니다. 개념 카드의 짧은 소개는 `index.html`에 따로 있으므로 상세 내용과 함께 맞춰주세요.
+예를 들어 첫 화면의 문구는 `index.html`의 `<h1>`에서, 경제노트 상세 내용은 `app.js`의 `koreanLessons`에서, 퀴즈는 `koreanQuestions`에서 바꿀 수 있습니다. 개념 카드의 짧은 소개는 `index.html`에 따로 있으므로 상세 내용과 함께 맞춰주세요.
 
 사이트 이름은 `index.html`의 `<title>`, description 메타 태그, 헤더·소개·푸터에도 있습니다. 이름을 바꿀 때 함께 수정하세요. 대표 색상은 `styles.css` 첫 줄의 `--blue` 값입니다.
 
@@ -135,7 +142,7 @@ https://YOUR-USERNAME.github.io/economy-note/
 
 ```sh
 git init -b main
-git add index.html styles.css app.js favicon.svg .nojekyll .gitignore README.md
+git add index.html styles.css app.js i18n.js favicon.svg .nojekyll .gitignore README.md
 git commit -m "Create economy learning website"
 git remote add origin https://github.com/YOUR-USERNAME/economy-note.git
 git push -u origin main
@@ -148,7 +155,7 @@ git push -u origin main
 업로드 후 **3-C의 Pages 설정은 한 번 해주어야 합니다.** 이후 수정은 다음과 같습니다.
 
 ```sh
-git add index.html styles.css app.js favicon.svg README.md
+git add index.html styles.css app.js i18n.js favicon.svg README.md
 git commit -m "Update economy notes"
 git push
 ```
@@ -159,7 +166,7 @@ git push
 | --- | --- |
 | 404가 보여요 | Actions의 배포 성공 여부, Pages의 브랜치·폴더, 최상위 `index.html`, URL의 저장소 이름을 확인합니다. |
 | 글은 보이는데 디자인이 없어요 | `styles.css`가 `index.html` 옆에 있는지, 파일명 대소문자가 맞는지 확인합니다. |
-| 버튼이나 그래프가 작동하지 않아요 | `app.js` 업로드 여부와 브라우저의 JavaScript 허용 여부를 확인합니다. |
+| 버튼이나 그래프가 작동하지 않아요 | `app.js`와 `i18n.js` 업로드 여부와 브라우저의 JavaScript 허용 여부를 확인합니다. |
 | 수정했는데 그대로예요 | 배포 완료까지 기다린 후 Mac에서 `Command + Shift + R`로 새로고침합니다. |
 | Branch에 main이 없어요 | 파일을 최소 하나 커밋하여 브랜치를 만든 뒤 Pages 설정으로 돌아옵니다. |
 | Pages 설정을 변경할 수 없어요 | 저장소 관리자·관리 권한과 계정 플랜, 저장소 공개 여부를 확인합니다. |

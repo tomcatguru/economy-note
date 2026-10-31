@@ -8,6 +8,7 @@
   <title>지호의 경제노트 · 일상에서 발견하는 경제</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
+  <script src="./i18n.js" defer></script>
   <script src="./app.js" defer></script>
 </head>
 <body>
@@ -15,7 +16,10 @@
   <header class="site-header">
     <a class="brand" href="#"><span class="brand-symbol" aria-hidden="true">e.</span><span>지호의 경제노트<small>JIHO’S ECONOMY NOTE</small></span></a>
     <nav aria-label="주 메뉴"><a href="#concepts">경제 개념</a><a href="#lab">경제 실험실</a><a href="#quiz">오늘의 퀴즈</a></nav>
-    <a class="header-link" href="#about">노트 소개 <span aria-hidden="true">↗</span></a>
+    <div class="header-actions"><a class="header-link" href="#about">노트 소개 <span aria-hidden="true">↗</span></a>
+      <label class="sr-only" for="language">언어 선택 / Language</label>
+      <select id="language" class="language-select"><option value="ko" lang="ko">한국어</option><option value="en" lang="en">English</option></select>
+    </div>
   </header>
   <main id="main">
     <section class="hero wrap" aria-labelledby="hero-title">
@@ -62,6 +66,6 @@
   </main>
   <footer class="wrap"><span>지호의 경제노트 <span class="footer-divider">/</span> 배움을 위한 데모 사이트</span><a href="https://www.bankofengland.co.uk/explainers/what-is-inflation" target="_blank" rel="noopener noreferrer">더 읽기 · 영란은행의 물가 설명 ↗</a><a href="#">맨 위로 ↑</a></footer>
   <dialog id="lesson-dialog" aria-labelledby="lesson-title"><div class="dialog-toolbar"><span class="eyebrow">ECONOMY NOTE</span><button id="close-lesson" class="close-button" aria-label="경제노트 닫기">×</button></div><h2 id="lesson-title"></h2><div id="lesson-body"></div><button id="lesson-done" class="button primary">잘 읽었어요 ✓</button></dialog>
-  <noscript><p class="noscript">경제노트 상세 보기, 계산기, 퀴즈를 사용하려면 브라우저에서 JavaScript를 켜 주세요.</p></noscript>
+  <noscript><p class="noscript">경제노트 상세 보기, 계산기, 퀴즈 및 언어 선택을 사용하려면 JavaScript를 켜 주세요. Enable JavaScript for notes, the calculator, the quiz, and language selection.</p></noscript>
 </body>
 </html>
