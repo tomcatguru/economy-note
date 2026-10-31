@@ -45,7 +45,8 @@ const attributes = [
   ['nav', 'aria-label', 'Main navigation'],
   ['.hero-visual', 'aria-label', 'An illustrative coffee price increase'],
   ['.filters', 'aria-label', 'Economics topics'],
-  ['#close-lesson', 'aria-label', 'Close economy note']
+  ['#close-lesson', 'aria-label', 'Close economy note'],
+  ['#inflation-animation', 'alt', 'Three examples explain rising prices, falling purchasing power, and lower inflation. A complete text explanation is available below.']
 ].map(([selector, name, en]) => { const element = document.querySelector(selector); return {element, name, ko: element.getAttribute(name), en}; });
 const koreanTitle = document.title;
 const descriptionMeta = document.querySelector('meta[name="description"]');
@@ -55,6 +56,21 @@ const dialog = document.querySelector('#lesson-dialog');
 const amount = document.querySelector('#amount');
 const rate = document.querySelector('#rate');
 const years = document.querySelector('#years');
+const animationImage = document.querySelector('#inflation-animation');
+const animationToggle = document.querySelector('#toggle-animation');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let animationPlaying = !reducedMotion.matches;
+
+function updateAnimation() {
+  const base = `./assets/inflation-${language}`;
+  const source = base + (animationPlaying ? '.gif' : '-still.png');
+  if (animationImage.getAttribute('src') !== source) animationImage.setAttribute('src', source);
+  document.querySelector('#download-animation').href = base + '.gif';
+  animationToggle.textContent = animationPlaying ? t('정지하고 요약 보기', 'Stop and show summary') : t('GIF 재생', 'Play GIF');
+  document.querySelector('#animation-status').textContent = animationPlaying ? t('약 18초 · 반복 재생 · 소리 없음', '18-second loop · No audio') : t('정지된 요약 이미지', 'Still summary');
+}
+animationToggle.addEventListener('click', () => { animationPlaying = !animationPlaying; updateAnimation(); });
+reducedMotion.addEventListener('change', event => { animationPlaying = !event.matches; updateAnimation(); });
 
 function applyLanguage(nextLanguage) {
   language = nextLanguage === 'en' ? 'en' : 'ko';
@@ -64,6 +80,7 @@ function applyLanguage(nextLanguage) {
   descriptionMeta.content = t(koreanDescription, 'Explore everyday economics with Jiho’s Economy Note. Read about prices, interest, and exchange rates, then try the interactive lab and quiz.');
   staticElements.forEach(({element, ko, en}) => { element.innerHTML = t(ko, en); });
   attributes.forEach(({element, name, ko, en}) => element.setAttribute(name, t(ko, en)));
+  updateAnimation();
   updateFilterStatus();
   updateLab();
   renderQuestion();
@@ -93,9 +110,9 @@ function renderLesson(key) {
   append('p', lesson.takeaway, 'takeaway');
   if (key === 'inflation') {
     const videoLink = document.createElement('a');
-    videoLink.href = '#watch';
+    videoLink.href = '#animation';
     videoLink.className = 'lesson-video-link';
-    videoLink.textContent = t('관련 영상 · 영란은행의 인플레이션 설명 →', 'Related video · Inflation explained by the Bank of England →');
+    videoLink.textContent = t('움직이는 GIF로 다시 보기 →', 'Explore inflation with an animated GIF →');
     videoLink.addEventListener('click', () => dialog.close());
     body.append(videoLink);
   }
