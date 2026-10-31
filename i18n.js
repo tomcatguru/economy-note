@@ -5,6 +5,7 @@ const englishUI = [
   ['.skip-link', 'Skip to content'],
   ['.brand > span:last-child', 'Jiho’s Economy Note<small>EVERYDAY ECONOMICS</small>'],
   ['nav a[href="#concepts"]', 'Economy notes'],
+  ['nav a[href="#animation"]', 'Inflation'],
   ['nav a[href="#lab"]', 'Economy lab'],
   ['nav a[href="#quiz"]', 'Quick quiz'],
   ['.header-link', 'About <span aria-hidden="true">↗</span>'],
